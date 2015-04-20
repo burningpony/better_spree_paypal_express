@@ -6,7 +6,7 @@ module Spree
       items = order.line_items.map(&method(:line_item))
 
       tax_adjustments = order.all_adjustments.tax.additional
-      shipping_adjustments = order.all_adjustments.shipping
+      shipping_adjustments = order.all_adjustments.shipping.additional
 
       order.all_adjustments.eligible.each do |adjustment|
         next if (tax_adjustments + shipping_adjustments).include?(adjustment)
